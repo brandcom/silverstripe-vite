@@ -1,6 +1,7 @@
 # Silverstripe Vite Plugin
 
-Installation: 
+Installation:
+
 ```
 composer require passchn/silverstripe-vite
 ```
@@ -13,6 +14,19 @@ extensions:
 - ViteHelper\Vite\ViteDataExtension
 ```
 
+Insert js / css tags in your template, e.g., `Page.ss`:
+
+```
+<head>
+    ...
+    $Vite.HeaderTags.RAW
+</head>
+<body>
+    ...
+    $Vite.BodyTags.RAW
+</body>
+```
+Take a look at the [ViteHelper.php](https://github.com/passchn/silverstripe-vite/blob/master/src/Vite/ViteHelper.php) for more Information. 
 ## Todo
 
 * Make the plugin configurable 
