@@ -2,6 +2,7 @@
 
 namespace ViteHelper\Vite;
 
+use SilverStripe\Core\Config\Configurable;
 use SilverStripe\View\ViewableData;
 
 /**
@@ -28,37 +29,51 @@ use SilverStripe\View\ViewableData;
  */
 class ViteHelper extends ViewableData
 {
+    use Configurable;
+
     /**
      * Disable dev scripts and serve the production files.
      */
-    private bool $forceProductionMode = false;
+    private bool $forceProductionMode;
 
     /**
      * Used in isDev() as a needle to test $_SERVER['HTTP_HOST'] if the site is running locally / in dev mode.
      * Set it to e.g. ".test", ".dev", "localhost" etc. to distinguish it from a live server environment.
      */
-    private string $devHostNeedle = '.test';
+    private string $devHostNeedle;
 
     /**
      * Port where the ViteJS dev server will serve
      */
-    private int $devPort = 3000;
+    private int $devPort;
 
     /**
      * Source directory for .js/.ts/.vue/.scss etc.
      */
-    private string $jsSrcDirectory = 'public_src/';
+    private string $jsSrcDirectory;
 
     /**
      * Main js / ts file.
      */
-    private string $mainJS = 'main.ts';
+    private string $mainJS;
 
     /**
      * Relative path (from /public) to the manifest.json created by ViteJS after running the build command.
      */
-    private string $manifestDir = '/public/manifest.json';
+    private string $manifestDir;
 
+    public function __construct()
+    {
+        parent::__construct();
+        $config = self::config();
+
+        $this->forceProductionMode = (bool)$config->forceProductionMode;
+        $this->devHostNeedle = $config->devHostNeedle ?? '.test';
+        $this->devPort = $config->devPort ?? 3000;
+        $this->jsSrcDirectory = $config->jsSrcDirectory ?? 'public_src/';
+        $this->mainJS = $config->mainJS ?? 'main.js';
+        $this->manifestDir = $config->manifestDir ?? '/public/manifest.json';
+    }
 
     /**
      * Serve script tags for insertion in the HTML head,
