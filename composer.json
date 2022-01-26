@@ -1,0 +1,21 @@
+{
+  "name": "passchn/silverstripe-vite",
+  "license": "MIT",
+  "type": "silverstripe-vendormodule",
+  "require": {
+    "php": "^7.4 || ^8.0",
+    "silverstripe/framework": "^4",
+    "silverstripe/cms": "^4"
+  },
+  "autoload": {
+    "psr-4": {
+      "ViteHelper\\": "src/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true,
+      "silverstripe/vendor-plugin": true
+    }
+  }
+}
