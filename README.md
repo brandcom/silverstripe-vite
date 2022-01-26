@@ -16,17 +16,22 @@ extensions:
 
 ## Configuration
 
-In your `mysite.yml`:
+You can override the default config in your `mysite.yml`:
 
 ```
 ViteHelper\Vite\ViteHelper:
-  forceProductionMode: true
-  devHostNeedle: '.test';
-  devPort: 3000;
-  jsSrcDirectory: 'public_src/';
-  mainJS: 'main.js';
+  forceProductionMode: false
+  devHostNeedle: '.test'
+  devPort: 3000
+  jsSrcDirectory: 'public_src/'
+  mainJS: 'main.js'
   manifestDir: '/public/manifest.json'
 ```
+
+E.g., if you use TypeScript, change the `mainJs` prop to `"main.ts"`. If you set `forceProductionMode` to true, only build files will be served - which will happen on your live site anyway. 
+Set the `devHostNeedle` to distinguish your live site from your local environment. 
+
+The config must match the `vite.config.js`. You need to **?flush** after making changes to yml configs. 
 
 Take a look at the [ViteHelper.php](https://github.com/passchn/silverstripe-vite/blob/master/src/Vite/ViteHelper.php) for more Information. 
 
