@@ -13,3 +13,6 @@ extensions:
 - ViteHelper\Vite\ViteDataExtension
 ```
 
+## Todo
+
+* Make the plugin configurable 

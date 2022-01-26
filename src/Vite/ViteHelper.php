@@ -31,7 +31,7 @@ class ViteHelper extends ViewableData
     /**
      * Disable dev scripts and serve the production files.
      */
-    private bool $forceProductionMode = true;
+    private bool $forceProductionMode = false;
 
     /**
      * Used in isDev() as a needle to test $_SERVER['HTTP_HOST'] if the site is running locally / in dev mode.
