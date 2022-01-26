@@ -1,6 +1,6 @@
 <?php
 
-namespace Vite\Vite;
+namespace ViteHelper\Vite;
 
 use SilverStripe\ORM\DataExtension;
 

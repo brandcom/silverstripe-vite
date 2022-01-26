@@ -1,6 +1,6 @@
 <?php
 
-namespace Vite\Vite;
+namespace ViteHelper\Vite;
 
 use SilverStripe\View\ViewableData;
 
