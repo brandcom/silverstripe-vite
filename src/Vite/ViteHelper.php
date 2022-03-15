@@ -135,9 +135,16 @@ class ViteHelper extends ViewableData
         $script_tags = [];
         foreach ($manifest as $item) {
 
-            if (!empty($item->isEntry) && true === $item->isEntry) {
-                $type = strpos($item->src, 'legacy') !== false ? 'nomodule' : 'module';
-                $script_tags[] = $this->script($item->file, $type);
+            if (!empty($item->isEntry)) {
+
+                $params = [];
+                if (strpos($item->src, 'legacy') !== false) {
+                    $params['nomodule'] = true;
+                } else {
+                    $params['type'] = 'module';
+                }
+
+                $script_tags[] = $this->script($item->file, $params);
             }
         }
 
@@ -163,7 +170,9 @@ class ViteHelper extends ViewableData
      */
     public function getDevScript(): string
     {
-        return $this->script('http://localhost:' . $this->devPort . '/@vite/client');
+        return $this->script('http://localhost:' . $this->devPort . '/@vite/client', [
+            'type' => 'module',
+        ]);
     }
 
     /**
@@ -171,7 +180,9 @@ class ViteHelper extends ViewableData
      */
     public function getClientScript(): string
     {
-        return $this->script('http://localhost:' . $this->devPort . '/' . $this->jsSrcDirectory . $this->mainJS);
+        return $this->script('http://localhost:' . $this->devPort . '/' . $this->jsSrcDirectory . $this->mainJS, [
+            'type' => 'module',
+        ]);
     }
 
     /**
@@ -237,8 +248,14 @@ class ViteHelper extends ViewableData
         return '<link rel="stylesheet" href="' . $url . '">';
     }
 
-    private function script(string $url, string $type = 'module'): string
+    private function script(string $url, array $params = []): string
     {
-        return '<script src="' . $url . '" type="' . $type . '"></script>';
+        $params_string = "";
+        foreach ($params as $param => $value) {
+            $params_string .= sprintf('%s="%s" ', $param, $value);
+        }
+
+        $script = '<script src="' . $url . '" ' . $params_string . '"></script>';
+        return $script;
     }
 }
