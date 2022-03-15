@@ -122,7 +122,7 @@ class ViteHelper extends ViewableData
      * For production. Available after build.
      * Return the most recent js file created by ViteJS
      *
-     * Will return additional <script type="nomodule"> tags
+     * Will return additional <script nomodule> tags
      * if @vite/plugin-legacy is installed.
      */
     public function getJS(): string
@@ -139,7 +139,7 @@ class ViteHelper extends ViewableData
 
                 $params = [];
                 if (strpos($item->src, 'legacy') !== false) {
-                    $params['nomodule'] = true;
+                    $params[] = 'nomodule';
                 } else {
                     $params['type'] = 'module';
                 }
@@ -252,6 +252,12 @@ class ViteHelper extends ViewableData
     {
         $params_string = "";
         foreach ($params as $param => $value) {
+
+            if (is_int($param)) {
+                $params_string .= sprintf('%s ', $value);
+                continue;
+            }
+
             $params_string .= sprintf('%s="%s" ', $param, $value);
         }
 
