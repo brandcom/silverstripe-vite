@@ -255,7 +255,7 @@ class ViteHelper extends ViewableData
             $params_string .= sprintf('%s="%s" ', $param, $value);
         }
 
-        $script = '<script src="' . $url . '" ' . $params_string . '"></script>';
+        $script = '<script src="' . $url . '" ' . $params_string . '></script>';
         return $script;
     }
 }
