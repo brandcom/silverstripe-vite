@@ -54,7 +54,7 @@ Insert js / css tags in your template, e.g., `Page.ss`:
 
 The config from your vite.config.js or vite.config.ts must match your config for this plugin. 
 
-See this [example vite.config.ts](https://github.com/passchn/silverstripe-vite/wiki/Example-vite.config.ts) for default configuration. 
+See this [example vite.config.ts](https://github.com/brandcom/silverstripe-vite/wiki/example-vite-config) for default configuration. 
 
 **Note:** When using vite below `2.9.0`, the server config will be different. [See this config](https://github.com/brandcom/silverstripe-vite/wiki/example-vite-config#vite-below-290).
 
