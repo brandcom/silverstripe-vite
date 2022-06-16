@@ -56,5 +56,5 @@ The config from your vite.config.js or vite.config.ts must match your config for
 
 See this [example vite.config.ts](https://github.com/passchn/silverstripe-vite/wiki/Example-vite.config.ts) for default configuration. 
 
-*Note:* When using vite below 2.9.0, the server config will be different. [See this config](https://github.com/brandcom/silverstripe-vite/wiki/example-vite-config#vite-below-290).
+**Note:** When using vite below `2.9.0`, the server config will be different. [See this config](https://github.com/brandcom/silverstripe-vite/wiki/example-vite-config#vite-below-290).
 
