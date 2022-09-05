@@ -10,8 +10,8 @@ In your `mysite.yml`:
 
 ```
 Page:
-extensions:
-- ViteHelper\Vite\ViteDataExtension
+  extensions:
+    - ViteHelper\Vite\ViteDataExtension
 ```
 
 ## Configuration
@@ -28,16 +28,18 @@ ViteHelper\Vite\ViteHelper:
   manifestDir: '/public/manifest.json'
 ```
 
-E.g., if you use TypeScript, change the `mainJs` prop to `"main.ts"`. If you set `forceProductionMode` to true, only build files will be served - which will happen on your live site anyway. 
-Set the `devHostNeedle` to distinguish your live site from your local environment. 
+*ViteHelper Config setting options:*
+- If you set `forceProductionMode` to true, only build files will be served when running `npm run build` - which will happen on your live site anyway.
+  - Setting this property to false will provide live updates when running `npm run dev` on a local environment.
+- Set the `devHostNeedle` to distinguish your live site from your local environments domain extension.
+- Set the `devPort` to an unused port (not the same port where the site is hosted from) for the Vite server to build asset from.
+- Define the `mainJS` entry point to where your applications script file is located.
+  - If you use TypeScript, change the `mainJs` prop to `"main.ts"`.
+- Define the `manifestDir` for where the manifest file will be located.
 
-The config must match the `vite.config.js`. You need to **?flush** after making changes to yml configs. 
+## Usage
 
-Take a look at the [ViteHelper.php](https://github.com/passchn/silverstripe-vite/blob/master/src/Vite/ViteHelper.php) for more Information. 
-
-## Usage 
-
-Insert js / css tags in your template, e.g., `Page.ss`:
+Insert JS / CSS tags in your main template, e.g., `Page.ss`:
 
 ```
 <head>
@@ -52,9 +54,12 @@ Insert js / css tags in your template, e.g., `Page.ss`:
 
 ## Vite config
 
-The config from your vite.config.js or vite.config.ts must match your config for this plugin. 
+The config must match the `vite.config.js`. You need to **?flush** after making changes to yml configs.
+
+Take a look at the [ViteHelper.php](https://github.com/passchn/silverstripe-vite/blob/master/src/Vite/ViteHelper.php) for more Information. 
+
+The config from your vite.config.js or vite.config.ts must match your ViteHelper config for this plugin.
 
 See this [example vite.config.ts](https://github.com/brandcom/silverstripe-vite/wiki/example-vite-config) for default configuration. 
 
 **Note:** When using vite below `2.9.0`, the server config will be different. [See this config](https://github.com/brandcom/silverstripe-vite/wiki/example-vite-config#vite-below-290).
-
