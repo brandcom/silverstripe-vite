@@ -32,7 +32,7 @@ ViteHelper\Vite\ViteHelper:
 - If you set `forceProductionMode` to true, the build files (created after running `vite build`) will be served.
 - Set the `devHostNeedle` to distinguish your live site from your local environment, e.g `localhost:8080`, `mysite.test` or `127.0.0.1`. 
   - **Note:** The vite dev server must also be running. 
-- Set the `devPort` to the port of the vite dev server. This will be shown in the terminal when running the dev server.
+- Set the `devPort` to the port of the vite dev server, e.g. `3000` – the vite port will be shown in the terminal when running the dev server. To set a fixed port (recommended), remember to also set it in the [vite config](https://github.com/brandcom/silverstripe-vite/wiki/example-vite-config) - under `server`. The port in both configs must always match. 
 - Define the `mainJS` entry point to where your applications script file is located.
   - E.g., if you use TypeScript, change the `mainJs` prop to `"main.ts"`.
 - Define the `manifestDir` for where the manifest file will be located.
