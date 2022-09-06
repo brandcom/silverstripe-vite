@@ -29,12 +29,12 @@ ViteHelper\Vite\ViteHelper:
 ```
 
 *ViteHelper Config setting options:*
-- If you set `forceProductionMode` to true, only build files will be served when running `npm run build` - which will happen on your live site anyway.
-  - Setting this property to false will provide live updates when running `npm run dev` on a local environment.
-- Set the `devHostNeedle` to distinguish your live site from your local environments domain extension.
-- Set the `devPort` to an unused port (not the same port where the site is hosted from) for the Vite server to build asset from.
+- If you set `forceProductionMode` to true, the build files (created after running `vite build`) will be served.
+- Set the `devHostNeedle` to distinguish your live site from your local environment, e.g `localhost:8080`, `mysite.test` or `127.0.0.1`. 
+  - **Note:** The vite dev server must also be running. 
+- Set the `devPort` to the port of the vite dev server. This will be shown in the terminal when running the dev server.
 - Define the `mainJS` entry point to where your applications script file is located.
-  - If you use TypeScript, change the `mainJs` prop to `"main.ts"`.
+  - E.g., if you use TypeScript, change the `mainJs` prop to `"main.ts"`.
 - Define the `manifestDir` for where the manifest file will be located.
 
 ## Usage
