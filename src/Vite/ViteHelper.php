@@ -240,7 +240,7 @@ class ViteHelper extends ViewableData
             return false;
         }
 
-        return strpos($_SERVER['HTTP_HOST'] ?? null, $this->devHostNeedle) !== false;
+        return strpos($_SERVER['HTTP_HOST'] ?? '', $this->devHostNeedle) !== false;
     }
 
     private function css(string $url): string
