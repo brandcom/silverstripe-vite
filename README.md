@@ -1,5 +1,11 @@
 # Silverstripe Vite Plugin
 
+
+## Silverstripe Version support
+
+* `^0.x` supports Silverstripe 4.x
+* `dev-master` supports Silverstripe 5.x. Note: No stable release available yet, see https://github.com/brandcom/silverstripe-vite/issues/3 
+
 ## Installation
 
 ```
