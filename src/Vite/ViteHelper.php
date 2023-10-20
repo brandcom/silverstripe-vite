@@ -205,7 +205,11 @@ class ViteHelper extends ViewableData
         }
 
         $manifest = file_get_contents($path);
-        $manifest = utf8_encode($manifest);
+        if (PHP_VERSION_ID >= 80200 && function_exists('mb_convert_encoding')) {
+            $manifest = mb_convert_encoding($manifest, 'UTF-8');
+        } else {
+            $manifest = utf8_encode($manifest);
+        }
 
         if (!$manifest) {
             throw new \Exception('No ViteDataExtension manifest.json found. ');
